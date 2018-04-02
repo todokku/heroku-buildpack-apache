@@ -22,7 +22,7 @@ if [ -f "$BUILD_DIR/.apache/.apache.cfg" ]; then
 fi
 
 if [ -z "$APACHE_VERSION" ]; then
-	APACHE_VERSION="2.4.12"
+	APACHE_VERSION="2.4.33"
 fi
 
 PREFIX_PATH="/app/apache"
