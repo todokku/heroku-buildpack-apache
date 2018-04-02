@@ -74,11 +74,11 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ]; then
 	echo $APACHE_VERSION > "$PREFIX_PATH/.apache-version"
 
 	info "Saving Apache installation to cache..."
-	cp -a "$PREFIX_PATH" "$CACHE_DIR"
+	cp -av "$PREFIX_PATH" "$CACHE_DIR"
 
 	info "Cleaning up Apache source files..."
 	cd ..
-	rm -rvf "$APACHE_SRC_DIR"
+	rm -rf "$APACHE_SRC_DIR"
 fi
 
 info "Copying Apache $APACHE_VERSION into $BUILD_DIR ..."
