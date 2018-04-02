@@ -74,7 +74,7 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ]; then
 	echo $APACHE_VERSION > "$PREFIX_PATH/.apache-version"
 
 	info "Saving Apache installation to cache..."
-	mkdir "${CACHE_DIR}/apache"
+	mkdir -p "${CACHE_DIR}/apache"
 	cp -av "$PREFIX_PATH" "$CACHE_DIR/apache"
 
 	info "Cleaning up Apache source files..."
