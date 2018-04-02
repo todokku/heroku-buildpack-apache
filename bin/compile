@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+/!/usr/bin/env bash
 
 ####### Configure environment
 set -e			# fail fast
@@ -75,7 +75,7 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ]; then
 
 	info "Saving Apache installation to cache..."
 	mkdir -p "${CACHE_DIR}/apache"
-	cp -av "$PREFIX_PATH" "$CACHE_DIR/apache"
+	cp -av "$PREFIX_PATH" "$CACHE_DIR"
 
 	info "Cleaning up Apache source files..."
 	cd ..
