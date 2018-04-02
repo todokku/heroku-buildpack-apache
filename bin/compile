@@ -55,7 +55,6 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ]; then
 
 	info "Downloading Apache $APACHE_VERSION..."
 	curl -L http://www.us.apache.org/dist//httpd/httpd-$APACHE_VERSION.tar.gz | tar xz
-	curl -L http://www.us.apache.org/dist//httpd/httpd-$APACHE_VERSION-deps.tar.gz | tar xz
 
 	cd "$APACHE_SRC_DIR"
 
