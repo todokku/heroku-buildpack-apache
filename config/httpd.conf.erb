@@ -34,4 +34,4 @@ ErrorLog "/app/apache/logs/error_log"
 LogLevel warn
 EnableSendfile On
 
-Listen <%= ENV["PORT"] %>
+Listen ${PORT}
