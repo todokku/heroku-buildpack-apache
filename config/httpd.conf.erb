@@ -12,6 +12,8 @@ KeepAliveTimeout 15
 LimitRequestFieldSize 8190
 DocumentRoot /app
 
+LoadModule authz_core_module modules/mod_authz_core.so
+LoadModule log_config_module modules/mod_log_config.so
 AccessFileName .htaccess
 <FilesMatch "^\.ht">
     Require all denied
