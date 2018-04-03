@@ -3,7 +3,7 @@ ServerTokens OS
 ServerSignature On
 TraceEnable On
 
-ServerRoot "/app/apache/etc/apache2"
+ServerRoot "/app/apache"
 PidFile run/httpd.pid
 Timeout 120
 KeepAlive Off
@@ -12,8 +12,8 @@ KeepAliveTimeout 15
 LimitRequestFieldSize 8190
 DocumentRoot /app
 
-LoadModule authz_core_module modules/mod_authz_core.so
-LoadModule log_config_module modules/mod_log_config.so
+LoadModule authz_core_module libexec/mod_authz_core.so
+LoadModule log_config_module libexec/mod_log_config.so
 AccessFileName .htaccess
 <FilesMatch "^\.ht">
     Require all denied
