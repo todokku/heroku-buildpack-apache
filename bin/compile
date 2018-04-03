@@ -86,7 +86,7 @@ info "Copying Apache $APACHE_VERSION into $BUILD_DIR ..."
 cp -R "$CACHE_DIR/apache" "$BUILD_DIR"
 
 info "Installing configuration files..."
-cp "$BUILDPACK_HOME/config/httpd.conf.erb" $BUILD_DIR/apache/etc/apache2
+cp "$BUILDPACK_HOME/config/httpd.conf" $BUILD_DIR/apache/etc/apache2
 
 info "Installing startup script..."
 cp "$BUILDPACK_HOME/bin/boot.sh" $BUILD_DIR
