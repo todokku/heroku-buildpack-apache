@@ -6,6 +6,7 @@ done
 # cat /app/apache/etc/apache2/httpd.conf
 
 mkdir -p /app/apache/logs
+mkdir -p /app/apache/var/cache
 touch /app/apache/logs/error_log
 touch /app/apache/logs/access_log
 tail -F /app/apache/logs/error_log &
