@@ -47,7 +47,7 @@ CACHED_APACHE_VERSION=$(cat $CACHE_DIR/apache/.apache-version 2>/dev/null || tru
 CACHED_MOD_CAS_VERSION=$(cat $CACHE_DIR/apache/.mod_cas-version 2>/dev/null || true)
 MOD_CAS_VERSION="1.1"
 
-if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" || "$CACHED_MOD_CAS_VERSION" != "$MOD_CAS_VERSION" ]; then
+if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ] || [ "$CACHED_MOD_CAS_VERSION" != "$MOD_CAS_VERSION" ]; then
 	info "Apache version changed since last build; old: $CACHED_APACHE_VERSION -> new: $APACHE_VERSION"
 	APACHE_SRC_DIR="httpd-$APACHE_VERSION"
 
