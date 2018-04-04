@@ -93,7 +93,7 @@ if [ "$CACHED_MOD_CAS_VERSION" != "$MOD_CAS_VERSION" ]; then
 	cd "mod_auth_cas-${MOD_CAS_VERSION}"
 	head "Configuring mod_cas $MOD_CAS_VERSION"
 	autoreconf -ivf 2>&1|indent
-	./configure --prefix=$PREFIX_PATH --with-apxs=$CACHE_DIR/bin/apxs 2>&1 |indent
+	./configure --prefix=$PREFIX_PATH --with-apxs=$CACHE_DIR/apache/bin/apxs 2>&1 |indent
 	head "Compiling with Make"
 	make -s -j 9 2>&1 | indent
 	head "Installing with Make"
