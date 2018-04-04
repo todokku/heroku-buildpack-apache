@@ -44,6 +44,7 @@ fi
 export_env_dir $ENV_DIR
 
 CACHED_APACHE_VERSION=$(cat $CACHE_DIR/apache/.apache-version 2>/dev/null || true)
+
 if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ]; then
 	info "Apache version changed since last build; old: $CACHED_APACHE_VERSION -> new: $APACHE_VERSION"
 	APACHE_SRC_DIR="httpd-$APACHE_VERSION"
@@ -80,6 +81,32 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ]; then
 	info "Cleaning up Apache source files..."
 	cd ..
 	rm -rf "$APACHE_SRC_DIR"
+fi
+
+CACHED_MOD_CAS_VERSION=$(cat $CACHE_DIR/apache/.mod_cas-version 2>/dev/null || true)
+MOD_CAS_VERSION="1.1"
+
+if [ "$CACHED_MOD_CAS_VERSION" != "$MOD_CAS_VERSION" ]; then
+	cd "$BUILD_DIR"
+	info "Downloading mod_cas $MOD_CAS_VERSION"
+	curl -L https://github.com/apereo/mod_auth_cas/archive/v1.1.tar.gz | tar xz
+	cd "mod_auth_cas-${MOD_CAS_VERSION}"
+	head "Configuring mod_cas $MOD_CAS_VERSION"
+	autoreconf -ivf 2>&1|indent
+	./configure --prefix=$PREFIX_PATH --with-apxs=$PREFIX_PATH/bin/apxs 2>&1 |indent
+	head "Compiling with Make"
+	make -s -j 9 2>&1 | indent
+	head "Installing with Make"
+	make install -s | indent
+	info "Saving mod_cas version file..."
+	echo $MOD_CAS_VERSION > "$PREFIX_PATH/.mod_cas-version"
+
+	info "Saving Apache+mod_cas installation to cache..."
+	cp -av "$PREFIX_PATH" "$CACHE_DIR"
+
+	info "Cleaning up mod_cas source files..."
+	cd ..
+	rm -rf "mod_auth_cas-${MOD_CAS_VERSION}"
 fi
 
 info "Copying Apache $APACHE_VERSION into $BUILD_DIR ..."
