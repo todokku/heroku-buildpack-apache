@@ -12,5 +12,8 @@ touch /app/apache/logs/access_log
 tail -F /app/apache/logs/error_log &
 tail -F /app/apache/logs/access_log &
 
+COMMAND=${@:$n}
+echo "Launching ${COMMAND}..."
+$COMMAND &
 echo "Launching apache..."
 exec /app/apache/sbin/httpd -DNO_DETACH
