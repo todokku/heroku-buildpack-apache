@@ -23,7 +23,7 @@ touch /app/apache/logs/access_log
 echo "Launching apache..."
 (
   echo "Launching apache..."
-  /app/apache/sbin/httpd -DNO_DETACH
+  /app/apache/sbin/httpd -DFOREGROUND
   echo 'apache' > $psmgr
 ) & 
 
