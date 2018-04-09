@@ -17,6 +17,7 @@ touch /app/apache/logs/access_log
 (
  COMMAND=${@:$n}
  echo "Launching ${COMMAND}..."
+ $COMMAND
  echo 'app' > $psmgr
 ) &
 
