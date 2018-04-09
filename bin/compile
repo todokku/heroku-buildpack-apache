@@ -63,8 +63,8 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ] || [ "$CACHED_MOD_CAS_VERSI
 	mkdir -p srclib/apr
 	mkdir -p srclib/apr-util
 
-	curl -L http://mirrors.sorengard.com/apache//apr/apr-1.6.3.tar.gz | tar xz -C srclib/apr --strip-components=1
-	curl -L http://mirrors.sorengard.com/apache//apr/apr-util-1.6.1.tar.gz | tar xz -C srclib/apr-util --strip-components=1
+	curl -L http://www.us.apache.org/dist/apr/apr-1.6.3.tar.gz | tar xz -C srclib/apr --strip-components=1
+	curl -L http://www.us.apache.org/dist/apr/apr-util-1.6.1.tar.gz | tar xz -C srclib/apr-util --strip-components=1
 
 	head "Configuring Apache with args: $CONFIGURE_ARGS"
 	./configure $CONFIGURE_ARGS 2>&1 | indent
