@@ -20,7 +20,6 @@ touch /app/apache/logs/access_log
  echo 'app' > $psmgr
 ) &
 
-$COMMAND &
 echo "Launching apache..."
 (
   echo "Launching apache..."
