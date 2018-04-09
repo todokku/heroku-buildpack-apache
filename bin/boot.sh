@@ -3,11 +3,7 @@ for var in `env|cut -f1 -d=`; do
   echo "PassEnv $var" >> /app/apache/etc/apache2/httpd.conf;
 done
 
-psmgr=/tmp/harvardkey-buildpack-wait
-rm -f $psmgr
-mkfifo $psmgr
-
-# cat /app/apache/etc/apache2/httpd.conf
+n=1
 
 mkdir -p /app/apache/logs
 mkdir -p /app/apache/var/cache
