@@ -14,18 +14,9 @@ mkdir -p /app/apache/var/cache
 touch /app/apache/logs/error_log
 touch /app/apache/logs/access_log
 
-(
- COMMAND=${@:$n}
- echo "Launching ${COMMAND}..."
- $COMMAND
- echo 'app' > $psmgr
-) &
+COMMAND=${@:$n}
+echo "Launching ${COMMAND}..."
+$COMMAND &
 
-(
-  echo "Launching apache"
-  exec /app/apache/sbin/httpd -DFOREGROUND -DNO_DETACH
-) &
-
-read exit_process <$psmgr
-echo "buildpack=apache at=exit process=$exit_process"
-exit 1
+echo "Launching apache"
+exec /app/apache/sbin/httpd -DFOREGROUND -DNO_DETACH
