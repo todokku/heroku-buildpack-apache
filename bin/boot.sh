@@ -21,5 +21,11 @@ touch /app/apache/logs/access_log
  echo 'app' > $psmgr
 ) &
 
-echo "Launching apache"
-exec /app/apache/sbin/httpd -DFOREGROUND -DNO_DETACH
+(
+  echo "Launching apache"
+  exec /app/apache/sbin/httpd -DFOREGROUND -DNO_DETACH
+) &
+
+read exit_process <$psmgr
+echo "buildpack=apache at=exit process=$exit_process"
+exit 1
