@@ -10,7 +10,7 @@ mkdir -p /app/apache/var/cache
 touch /app/apache/logs/error_log
 touch /app/apache/logs/access_log
 
-COMMAND=${@:$n}
+COMMAND="${@:$n}"
 echo "Launching ${COMMAND}..."
 $COMMAND &
 
