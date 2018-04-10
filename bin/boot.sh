@@ -12,7 +12,7 @@ touch /app/apache/logs/access_log
 
 COMMAND="${@:$n}"
 echo "Launching ${COMMAND}..."
-$COMMAND &
+eval "${COMMAND}" &
 
 echo "Launching apache"
 exec /app/apache/sbin/httpd -DFOREGROUND -DNO_DETACH
