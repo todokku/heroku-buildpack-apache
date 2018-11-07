@@ -1,4 +1,4 @@
-/!/usr/bin/env bash
+#!/usr/bin/env bash
 
 ####### Configure environment
 set -e			# fail fast
@@ -57,14 +57,14 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ] || [ "$CACHED_MOD_CAS_VERSI
 	cd "$BUILD_DIR"
 
 	info "Downloading Apache $APACHE_VERSION..."
-	curl -L http://www.us.apache.org/dist//httpd/httpd-$APACHE_VERSION.tar.gz | tar xz
+	curl -L https://archive.apache.org/dist/httpd/httpd-$APACHE_VERSION.tar.gz | tar xz
 
 	cd "$APACHE_SRC_DIR"
 	mkdir -p srclib/apr
 	mkdir -p srclib/apr-util
 
-	curl -L http://www.us.apache.org/dist/apr/apr-1.6.3.tar.gz | tar xz -C srclib/apr --strip-components=1
-	curl -L http://www.us.apache.org/dist/apr/apr-util-1.6.1.tar.gz | tar xz -C srclib/apr-util --strip-components=1
+	curl -L https://archive.apache.org/dist/apr/apr-1.6.3.tar.gz | tar xz -C srclib/apr --strip-components=1
+	curl -L https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.gz | tar xz -C srclib/apr-util --strip-components=1
 
 	head "Configuring Apache with args: $CONFIGURE_ARGS"
 	./configure $CONFIGURE_ARGS 2>&1 | indent
